@@ -4290,7 +4290,7 @@ bool f_imageconvolution(CResRef image, CArrRef matrix,
       }
     }
   }
-  if (gdImageConvolution(im_src, mtx, div, offset)) {
+  if (HPHP::gdImageConvolution(im_src, mtx, div, offset)) {
     return true;
   } else {
     return false;
