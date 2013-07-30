@@ -1,0 +1,25 @@
+LibXMLError
+object(LibXMLError)#1 (0) {
+}
+string(23) "O:11:"LibXMLError":0:{}"
+object(LibXMLError)#2 (0) {
+}
+array(1) {
+  [0]=>
+  string(11) "__construct"
+}
+================
+A_LibXMLError
+object(A_LibXMLError)#3 (1) {
+  ["___x"]=>
+  NULL
+}
+string(38) "O:13:"A_LibXMLError":1:{s:4:"___x";N;}"
+object(A_LibXMLError)#4 (1) {
+  ["___x"]=>
+  NULL
+}
+array(1) {
+  [0]=>
+  string(11) "__construct"
+}

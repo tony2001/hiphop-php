@@ -1,73 +1,33 @@
-# HipHop for PHP
+# HipHop VM for PHP [![Build Status](https://travis-ci.org/facebook/hiphop-php.png?branch=master)](https://travis-ci.org/facebook/hiphop-php)
 
-HipHop is a source code transformer which transforms PHP source code into highly optimized C++ and then compiles it using g++. Currently supported platforms are Linux and FreeBSD. There is no OS X support.
+HipHop VM (HHVM) is a new open-source virtual machine designed for executing programs written in PHP. HHVM uses a just-in-time compilation approach to achieve superior performance while maintaining the flexibility that PHP developers are accustomed to. HipHop VM (and before it HPHPc) has realized > 5x increase in throughput for Facebook compared with Zend PHP 5.2.
 
-* [Developer Mailing List](http://groups.google.com/group/hiphop-php-dev)
-* [Wiki](http://wiki.github.com/facebook/hiphop-php)
-* [Issue Tracker](http://github.com/facebook/hiphop-php/issues)
+HipHop is most commonly run as a standalone server, replacing both Apache and modphp.
 
-## Required Packages
+## Installing
 
-The latest information is available on the [wiki](http://wiki.github.com/facebook/hiphop-php/building-and-installing)
+You can install a [prebuilt package](https://github.com/facebook/hiphop-php/wiki#installing-pre-built-packages-for-hhvm) or [compile from source](https://github.com/facebook/hiphop-php/wiki#building-hhvm).
 
-* cmake *2.6 is the minimum version*
-* g++/gcc *4.3 is the minimum version*
-* Boost *1.37 is the minimum version*
-* flex
-* bison
-* re2c
-* libmysql
-* libxml2
-* libmcrypt
-* libicu *4.2 is the minimum version*
-* openssl
-* binutils
-* libcap
-* gd
-* zlib
-* tbb *Intel's Thread Building Blocks*
-* [Oniguruma](http://www.geocities.jp/kosako3/oniguruma/)
-* libpcre
-* libexpat
-* libmemcached
+## Running
 
-The following packages have had slight modifications added to them. Patches are provided and should be made against the current source copies.
+You can run standalone programs just by passing them to hhvm: `hhvm my_script.php`.
 
-* [libcurl](http://curl.haxx.se/download.html)
-* src/third_party/libcurl.fb-changes.diff
-* [libevent 1.4](http://www.monkey.org/~provos/libevent/)
-* src/third_party/libevent-1.4.13.fb-changes.diff	OR src/third_party/libevent-1.4.14.fb-changes.diff
+HipHop bundles in a webserver. So if you want to run on port 80 in the current directory:
 
-## Installation
+```
+sudo hhvm -m server
+```
 
-You may need to point CMake to the location of your custom libcurl and libevent, or to any other libraries which needed to be installed. The *CMAKE_PREFIX_PATH* variable is used to hint to the location.
+For anything more complicated, you'll want to make a [config.hdf](https://github.com/facebook/hiphop-php/wiki/Runtime-options#server) and run `sudo hhvm -m server -c config.hdf`.
 
-    export CMAKE_PREFIX_PATH=/home/user
+## Contributing
 
-To build HipHop, use the following:
+We'd love to have your help in making HipHop better. If you run into problems, please open an [issue](http://github.com/facebook/hiphop-php/issues), or better yet, fork us and send a pull request. Join us on [#hhvm on freenode](http://webchat.freenode.net/?channels=hhvm).
 
-Linux:
+If you want to help but don't know where to start, try fixing some of the [Zend tests that don't pass](hphp/test/zend/bad). You can run them with [hphp/test/run](hphp/test/run). When they work, move them to [zend/good](hphp/test/zend/good) and send a pull request.
 
-    cd /home/user/dev
-    git clone git://github.com/facebook/hiphop-php.git
-    cd hiphop-php
-    git submodule init
-    git submodule update
-    export HPHP_HOME=`pwd`
-    export HPHP_LIB=`pwd`/bin
-    cmake .
+Before changes can be accepted a [Contributors Licensing Agreement](http://developers.facebook.com/opensource/cla) ([pdf](https://github.com/facebook/hiphop-php/raw/master/hphp/doc/FB_Individual_CLA.pdf) - print, sign, scan, link) must be signed.
 
-If you are using FreeBSD instead use export - setenv
+## Licence
 
-Once this is done you can generate the build file. This will return you to the shell. Finally, to build, run `make`. If any errors occur, it may be required to remove the CMakeCache.txt directory in the checkout.
-
-    make
-
-## Contributing to HipHop
-HipHop is licensed under the PHP and Zend licenses except as otherwise noted.
-
-Before changes can be accepted a [Contributors Licensing Agreement](http://developers.facebook.com/opensource/cla) must be signed and returned.
-
-## Running HipHop
-
-Please see [the wiki page](http://wiki.github.com/facebook/hiphop-php/running-hiphop)
+HipHop VM is licensed under the PHP and Zend licenses except as otherwise noted.
